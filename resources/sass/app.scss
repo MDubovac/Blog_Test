@@ -6,3 +6,19 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Admin LTE
+@import '~admin-lte/dist/css/adminlte.css';
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+
+/* Global */
+.text-red{
+    color:#eb4034;
+}
+.text-white{
+    color: #fafafa;
+}
+
