@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -28,6 +29,7 @@ class CategoryController extends Controller
             'name' => $request->name
         ]);
 
+        session()->flash('s', 'Category Created Successfully.');
         return redirect(route('categories.index'));
     }
     
@@ -39,19 +41,22 @@ class CategoryController extends Controller
     // Update
     public function update(Request $request, Category $category){
         $this->validate($request, [
-            'name' => 'string|max:191|unique:categories'
+            'name' => ['required', Rule::unique('categories', 'name')->ignore($category->id)]
         ]);
 
         $category->update([
             'name' => $request->name
         ]);
             
+        session()->flash('s', 'Category Updated Successfully.');
         return redirect(route('categories.index'));
     }
 
     // Delete
     public function destroy(Category $category){
         $category->delete();
+
+        session()->flash('s', 'Category Deleted Successfully.');
         return redirect(route('categories.index'));
 
     }

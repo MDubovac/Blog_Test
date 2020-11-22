@@ -57,6 +57,7 @@ class PostController extends Controller
             'category_id' => $request->category_id
         ]);
 
+        session()->flash('s', 'Post Created Successfully.');
         return redirect(route('posts.index'));
     }
 
@@ -109,6 +110,7 @@ class PostController extends Controller
         
         $post->update($data);
 
+        session()->flash('s', 'Post Updated Successfully.');
         return redirect(route('posts.index'));
     
     }
@@ -125,6 +127,7 @@ class PostController extends Controller
         $post->delete();
         $post->deleteImage();
 
+        session()->flash('s', 'Post Deleted Successfully.');
         return redirect(route('posts.index'));
     }
 }

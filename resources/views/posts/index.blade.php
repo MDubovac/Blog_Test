@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container py-4">
-        <h2>Posts</h2>
-        <a href="{{ route('posts.create') }}" class="btn btn-outline-success btn-sm my-2">
+    <div class="container">
+        <h2 class="mt-2">Posts</h2>
+        <a href="{{ route('posts.create') }}" class="btn btn-outline-success btn-sm mt-2 mb-3">
             Add New <i class="fas fa-plus-circle"></i>
         </a>
         <table class="table table-bordered table-striped ">

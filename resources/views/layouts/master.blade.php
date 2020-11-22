@@ -103,7 +103,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    @yield('content')
+    <div class="container">
+      @if (session()->has('s'))
+        <div class="alert alert-success mt-2">
+          {{ session()->get('s') }}
+        </div>
+      @endif
+      @yield('content')
+    </div>
   </div>
   <!-- /.content-wrapper -->
 
