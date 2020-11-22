@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/home" class="brand-link">
       <img src="/static-img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">Admin Panel</span>
     </a>
@@ -68,13 +68,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
         <li class="nav-item">
             <a href="{{ route('categories.index') }}" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon fas fa-list"></i>
                 <p>
                     Categories
                 </p>
             </a>
         </li>
-         
+        <li class="nav-item">
+          <a href="{{ route('posts.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+                  Posts
+              </p>
+          </a>
+      </li>
           <li class="nav-item">
               <a class="nav-link" href="{{ route('logout') }}"
               onclick="event.preventDefault();
