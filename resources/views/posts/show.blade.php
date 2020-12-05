@@ -9,6 +9,6 @@
         <p style="color:gray">{{ $post->description }}</p>
         <p>Popular in: {{ $post->category->name }}</p>
         <img src="/storage/{{ $post->image }}" width="90%">
-        <h4 class="mt-3 mb-3">{{ $post->body }}</h4>
+        <h4 class="mt-3 mb-3">{!! html_entity_decode($post->body) !!}</h4>
     </div>
 @endsection
