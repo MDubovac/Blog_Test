@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-        <h2 class="mt-2">Posts</h2>
+        <h2 class="mt-2">
+            Posts
+        </h2>
         <a href="{{ route('posts.create') }}" class="btn btn-outline-success btn-sm mt-2 mb-3">
             Add New <i class="fas fa-plus-circle"></i>
         </a>
@@ -25,14 +27,16 @@
                         <td>{{ $item->category->name }}</td>
                         <td>
                             <div class="actions d-flex">
+                                @if (!$item->trashed())
                                 <a href="{{ route('posts.edit', $item->id) }}" class="btn btn-success btn-sm mr-1">
-                                    Edit
+                                    <i class="fas fa-edit"></i>
                                 </a>
+                                @endif
                                 <form action="{{ route('posts.destroy', $item->id ) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm ml-1">
-                                        Delete
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </div>

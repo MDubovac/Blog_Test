@@ -12,6 +12,8 @@ try {
 
     require('bootstrap');
     require('admin-lte');
+    require('summernote');
+    
 } catch (e) {}
 
 /**

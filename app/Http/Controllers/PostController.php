@@ -123,11 +123,20 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-        $post->delete();
-        $post->deleteImage();
+        $post = Post::withTrashed()->where('id', $id)->first();
+        if($post->trashed()){
+            $post->deleteImage();
+            $post->forceDelete();
+        }else{
+            $post->delete();
+        } 
 
         session()->flash('s', 'Post Deleted Successfully.');
         return redirect(route('posts.index'));
+    }
+
+    public function trashed(){
+        $trashed = Post::onlyTrashed()->get();
+        return view('posts.index')->withPosts($trashed);
     }
 }

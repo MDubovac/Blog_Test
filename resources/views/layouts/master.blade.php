@@ -9,9 +9,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Blog Test</title>
-    
     <!-- Custom Css -->
     <link rel="stylesheet" href="/css/app.css">    
+    <!-- Summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
@@ -73,7 +74,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     Categories
                 </p>
             </a>
-        </li>
+        </li>    
+        
         <li class="nav-item">
           <a href="{{ route('posts.index') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
@@ -81,19 +83,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Posts
               </p>
           </a>
-      </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                <i class="nav-icon fas fa-power-off text-red"></i>
-                <p>Logout</p>
-                </a>
+        </li> 
+        
+        <li class="nav-item">
+          <a href="{{ route('posts.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>
+                  Tags
+              </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('trashed-posts.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-trash"></i>
+              <p>
+                  Deleted Posts
+              </p>
+          </a>
+        </li> 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+              <i class="nav-icon fas fa-power-off text-red"></i>
+              <p>Logout</p>
+              </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-          </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
+        </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -128,6 +147,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<script src="/js/app.js"></script>
+<script src="/js/app.js"></script> <!-- Main JS file -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script><!-- Summernote -->
 </body>
 </html>

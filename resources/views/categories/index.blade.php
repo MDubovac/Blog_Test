@@ -20,13 +20,13 @@
                         <td>
                             <div class="actions d-flex">
                                 <a href="{{ route('categories.edit', $item->id) }}" class="btn btn-success btn-sm mr-1">
-                                    Edit
+                                    <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="{{ route('categories.destroy', $item->id ) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm ml-1">
-                                        Delete
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </div>
