@@ -135,8 +135,30 @@ class PostController extends Controller
         return redirect(route('posts.index'));
     }
 
+    /** 
+     * Soft Deletes 
+     * Trashed Function
+     * Get all the trashed posts
+     * Display them on index page in posts
+     **/
     public function trashed(){
         $trashed = Post::onlyTrashed()->get();
         return view('posts.index')->withPosts($trashed);
     }
+
+    /** 
+     * Soft Deletes 
+     * Restore Function
+     * Get the trashed post we wish to restore
+     * Restore The Actual Post
+     **/
+     public function restore($id){
+        $post = Post::withTrashed()->where('id', $id)->first();
+        $post->restore();
+        
+        session()->flash('s', 'Post Restored Successfully.');
+        return redirect("posts.index");
+    }
+
+
 }

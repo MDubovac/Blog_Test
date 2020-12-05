@@ -2,10 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class="mt-2">
-            Posts
-        </h2>
-        <a href="{{ route('posts.create') }}" class="btn btn-outline-success btn-sm mt-2 mb-3">
+        <a href="{{ route('posts.create') }}" class="btn btn-outline-primary btn-sm mt-2 mb-3">
             Add New <i class="fas fa-plus-circle"></i>
         </a>
         <table class="table table-bordered table-striped ">
@@ -28,9 +25,16 @@
                         <td>
                             <div class="actions d-flex">
                                 @if (!$item->trashed())
-                                <a href="{{ route('posts.edit', $item->id) }}" class="btn btn-success btn-sm mr-1">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                                    <a href="{{ route('posts.edit', $item->id) }}" class="btn btn-primary    btn-sm mr-1">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                @endif
+                                @if ($item->trashed())
+                                    <form method="POST" action="{{ route('restore-post', $item->id) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-primary btn-sm">Restore</button>
+                                    </form>
                                 @endif
                                 <form action="{{ route('posts.destroy', $item->id ) }}" method="POST">
                                     @csrf

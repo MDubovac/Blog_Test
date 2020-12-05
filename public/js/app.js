@@ -60002,6 +60002,7 @@ var app = new Vue({
   el: '#app'
 });
 $(document).ready(function () {
+  // Init Summernote
   $("#body").summernote();
 });
 

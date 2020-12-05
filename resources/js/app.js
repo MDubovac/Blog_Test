@@ -32,5 +32,7 @@ const app = new Vue({
 });
 
 $(document).ready(function (){
+    // Init Summernote
     $("#body").summernote();
+
 });

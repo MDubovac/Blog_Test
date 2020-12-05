@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </li> 
         
         <li class="nav-item">
-          <a href="{{ route('posts.index') }}" class="nav-link">
+          <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tags"></i>
               <p>
                   Tags
@@ -149,5 +149,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <script src="/js/app.js"></script> <!-- Main JS file -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script><!-- Summernote -->
+<script>
+  // Check for active menu link 
+  const currentLocation = location.href;
+  const menuItem = document.querySelectorAll('a');
+  const menuLength = menuItem.length;
+  for(let i = 0; i < menuLength; i++){
+    if(menuItem[i] == currentLocation){
+      menuItem[i].className = 'nav-link active';
+    }
+  }
+
+
+</script>
 </body>
 </html>

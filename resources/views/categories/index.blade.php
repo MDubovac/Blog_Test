@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class="mt-2">Categories</h2>
-        <a href="{{ route('categories.create') }}" class="btn btn-outline-success btn-sm mt-2 mb-3">
+        <a href="{{ route('categories.create') }}" class="btn btn-outline-primary btn-sm mt-2 mb-3">
             Add New <i class="fas fa-plus-circle"></i>
         </a>
         <table class="table table-bordered table-striped ">
@@ -19,7 +18,7 @@
                         <td>{{ $item->name }}</td>
                         <td>
                             <div class="actions d-flex">
-                                <a href="{{ route('categories.edit', $item->id) }}" class="btn btn-success btn-sm mr-1">
+                                <a href="{{ route('categories.edit', $item->id) }}" class="btn btn-primary btn-sm mr-1">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="{{ route('categories.destroy', $item->id ) }}" method="POST">
