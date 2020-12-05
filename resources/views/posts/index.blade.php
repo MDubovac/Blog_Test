@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <a href="{{ route('posts.create') }}" class="btn btn-outline-primary btn-sm mt-2 mb-3">
-            Add New <i class="fas fa-plus-circle"></i>
+            <i class="fas fa-plus-circle"></i> Add New Post 
         </a>
         <table class="table table-bordered table-striped ">
             <thead>
