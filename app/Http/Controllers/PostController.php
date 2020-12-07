@@ -9,6 +9,11 @@ use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
+    /* Constructor */
+    public function __construct(){
+        $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
+    }
+
     /**
      * Display a listing of the resource.
      *

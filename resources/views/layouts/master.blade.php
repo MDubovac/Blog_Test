@@ -129,6 +129,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{ session()->get('s') }}
         </div>
       @endif
+      @if (session()->has('error'))
+      <div class="alert alert-danger mt-2">
+        {{ session()->get('error') }}
+      </div>
+    @endif
       @yield('content')
     </div>
   </div>

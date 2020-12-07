@@ -19,12 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::middleware(['auth'])->group( function() {
+    // Categories Routes
+    Route::resource('categories', 'CategoryController'); // resource
+    
+    // Posts routes
+    Route::resource('posts', 'PostController'); // resource
+    Route::get('trashed-posts', 'PostController@trashed')->name('trashed-posts.index');
+    Route::put('restore-post/{post}', 'PostController@restore')->name('restore-post');
 
-// Categories Routes
-Route::resource('categories', 'CategoryController'); // resource
-
-// Posts routes
-Route::resource('posts', 'PostController'); // resource
-Route::get('trashed-posts', 'PostController@trashed')->name('trashed-posts.index');
-Route::put('restore-post/{post}', 'PostController@restore')->name('restore-post');
+});
 
