@@ -9,6 +9,7 @@
             <thead>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Posts Count</th>
                 <th>Actions</th>
             </thead>
             <tbody>
@@ -16,6 +17,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->posts->count() }} Post(s)</td>
                         <td>
                             <div class="actions d-flex">
                                 <a href="{{ route('categories.edit', $item->id) }}" class="btn btn-primary btn-sm mr-1">
