@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Tag;
 use Illuminate\Validation\Rule;
 
 class PostController extends Controller
@@ -33,7 +34,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create')->with('categories', $categories);
+        $tags = Tag::all();
+        return view('posts.create')->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
@@ -44,6 +46,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'title' => 'string|required|unique:posts',
             'description' => 'string|required',
@@ -54,13 +57,17 @@ class PostController extends Controller
 
         $image = $request->image->store('posts');
 
-        Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'body' => $request->body,
             'image' => $image,
             'category_id' => $request->category_id
         ]);
+
+        if($request->tags){
+            $post->tags()->attach($request->tags);
+        }
 
         session()->flash('s', 'Post Created Successfully.');
         return redirect(route('posts.index'));
@@ -86,7 +93,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view("posts.create")->with('post', $post)->with('categories', $categories);
+        $tags = Tag::all();
+        return view("posts.create")->with('post', $post)->with('categories', $categories)->with('tags', $tags);
     }
 
     /**
@@ -113,6 +121,11 @@ class PostController extends Controller
             $data['image'] = $image;
         }
         
+        // Sync The Tags
+        if($request->tags){
+            $post->tags()->sync($request->tags);
+        }
+
         $post->update($data);
 
         session()->flash('s', 'Post Updated Successfully.');

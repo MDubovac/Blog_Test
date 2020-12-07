@@ -17,6 +17,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
+                    <td>{{ $item->posts->count() }}</td>
                     <td>
                         <div class="actions d-flex">
                             <a href="{{ route('tags.edit', $item->id) }}" class="btn btn-primary btn-sm mr-1">

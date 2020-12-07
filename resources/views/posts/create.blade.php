@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container py-4">
-        <a href="{{ route('posts.index') }}" class="ml-5 mb-3 btn btn-outline-success"> < Back</a>
+        <a href="{{ route('posts.index') }}" class="ml-5 mb-3 btn btn-outline-primary"> < Back</a>
         <h2 class="ml-5">
             {{ isset($post) ? 'Edit Post' : 'Create new Post'}}
         </h2>
@@ -45,6 +45,24 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div class="form-group">
+                    @if ($tags->count() > 0)
+                    <label for="tags">Tags</label>
+                    <select name="tags[]" id="tags" class="form-control" multiple>
+                        @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}"
+                                @if (isset($post))
+                                    @if($post->hasTag($tag->id))
+                                        selected
+                                    @endif
+                                @endif
+                                >{{ $tag->name}}</option>
+                        @endforeach
+                    </select>
+                    @endif
+                </div>
+
                 @if (isset($post))
                     <img src="/storage/{{ $post->image }}" width="60%"/>
                 @endif
@@ -62,7 +80,7 @@
                 @error('body') 
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
-                <button type="submit" class="btn btn-success btn-sm">
+                <button type="submit" class="btn btn-primary btn-sm">
                     {{ isset($post) ? 'Save changes' : 'Create' }}
                 </button>
             </form>
