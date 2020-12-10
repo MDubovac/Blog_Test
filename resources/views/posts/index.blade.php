@@ -5,6 +5,7 @@
         <a href="{{ route('posts.create') }}" class="btn btn-outline-primary btn-sm mt-2 mb-3">
             <i class="fas fa-plus-circle"></i> Add New Post 
         </a>
+        @if ($posts->count() > 0)
         <table class="table table-bordered table-striped ">
             <thead>
                 <th>Thumbnail</th>
@@ -49,5 +50,9 @@
                 @endforeach
             </tbody>
         </table>
+        @else
+            <h3 class="text-center">No Posts yet.</h3>
+            <p class="text-center">To add a post click the "Add New Post" button!</p>
+        @endif
     </div>
 @endsection

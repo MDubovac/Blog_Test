@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container py-4">
-        <a href="{{ route('posts.index') }}" class="mb-2 btn btn-outline-success">
+        <a href="{{ route('posts.index') }}" class="mb-2 btn btn-outline-primary">
             < Back
         </a>
         <h2>{{ $post->title }}</h2>

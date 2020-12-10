@@ -5,6 +5,7 @@
         <a href="{{ route('categories.create') }}" class="btn btn-outline-primary btn-sm mt-2 mb-3">
             <i class="fas fa-plus-circle"></i> Add New Category
         </a>
+        @if ($categories->count() > 0)
         <table class="table table-bordered table-striped ">
             <thead>
                 <th>ID</th>
@@ -36,5 +37,9 @@
                 @endforeach
             </tbody>
         </table>
+        @else
+            <h3 class="text-center">No Categories yet.</h3>
+            <p class="text-center">To add a category click the "Add New Category" button!</p>
+        @endif
     </div>
 @endsection
