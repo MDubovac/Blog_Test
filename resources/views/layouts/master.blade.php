@@ -67,7 +67,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-   
+        @if (auth()->user()->isAdmin())
+        <li class="nav-item">
+          <a href="{{ route('users.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                  Users
+              </p>
+          </a>
+        </li>
+
+        @endif
         <li class="nav-item">
             <a href="{{ route('categories.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-list"></i>
@@ -94,6 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
           </a>
         </li>
+       
         <li class="nav-item">
           <a href="{{ route('trashed-posts.index') }}" class="nav-link">
               <i class="nav-icon fas fa-trash"></i>
