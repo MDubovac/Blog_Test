@@ -113,6 +113,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
           </a>
         </li> 
+
+        <li class="nav-item">
+          <a href="{{ route("users.edit-profile") }}" class="nav-link">
+            <i class="nav-icon fas fa-edit"></i> 
+            <p>Edit Profile</p>
+          </a>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -125,6 +133,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   @csrf
               </form>
         </li>
+
+        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

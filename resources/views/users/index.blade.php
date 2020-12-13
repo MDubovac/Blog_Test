@@ -6,16 +6,14 @@
     @if ($users->count() > 0)
     <table class="table table-bordered table-striped ">
         <thead>
-            <th>ID</th>
             <th>Name</th>
             <th>E-Mail</th>
             <th>Role</th>
-            <th></th>
+            <th>Actions</th>
         </thead>
         <tbody>
             @foreach ($users as $item)
                 <tr>
-                    <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->role }}</td>

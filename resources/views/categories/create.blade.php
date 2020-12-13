@@ -15,6 +15,9 @@
                 <div class="form-group">
                     <label for="name">Category Name</label>
                     <input id="name" name="name" type="text" class="form-control" placeholder="Category name here..." value="{{ isset($category) ? $category->name : '' }}">
+                    @error('name') 
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
             </form>

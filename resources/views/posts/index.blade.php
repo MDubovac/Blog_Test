@@ -52,7 +52,6 @@
         </table>
         @else
             <h3 class="text-center">No Posts yet.</h3>
-            <p class="text-center">To add a post click the "Add New Post" button!</p>
         @endif
     </div>
 @endsection

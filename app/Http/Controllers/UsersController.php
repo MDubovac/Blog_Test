@@ -19,4 +19,27 @@ class UsersController extends Controller
         session()->flash('s', 'User has been made admin successfully.');
         return redirect(route('users.index'));
     }
+
+    public function edit(){
+        $user = auth()->user();
+        return view('users.edit')->with('user', $user);
+    }
+
+    public function update(Request $request){
+        $user = auth()->user();
+
+        $this->validate($request, [
+            'name' => 'required',
+            'about' => 'required'
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'about' => $request->about
+        ]);
+
+        session()->flash('s', 'User Profile Updated Successfully.');
+
+        return redirect()->back();
+    }
 }

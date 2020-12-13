@@ -14,7 +14,8 @@
                 @endif
                 <div class="form-group">
                     <label for="title">Post Title</label>
-                    <input id="title" name="title" type="text" class="form-control" placeholder="Post title here..." value="{{ isset($post) ? $post->title : '' }}">                    @error('title') 
+                    <input id="title" name="title" type="text" class="form-control" placeholder="Post title here..." value="{{ isset($post) ? $post->title : '' }}">                    
+                    @error('title') 
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>

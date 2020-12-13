@@ -15,6 +15,9 @@
             <div class="form-group">
                 <label for="name">Tag Name</label>
                 <input id="name" name="name" type="text" class="form-control" placeholder="Tag name here..." value="{{ isset($tag) ? $tag->name : '' }}">
+                @error('name') 
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
         </form>
